@@ -29,6 +29,7 @@ h1 {
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+    transition: background-color 0.3s; /* Animação suave */
 }
 
 .menu-item img {
@@ -37,14 +38,16 @@ h1 {
     border-radius: 5px;
 }
 
-.menu-item:hover {
-    background-color: #0056b3;
+.menu-item.active {
+    background-color: #0056b3; /* Cor quando o item está aberto */
 }
 
-#content {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: white;
+/* Estilo para o conteúdo que será exibido */
+.menu-item .content {
+    display: none; /* Inicialmente oculto */
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #e9ecef;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
