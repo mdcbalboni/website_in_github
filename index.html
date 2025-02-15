@@ -37,27 +37,65 @@
     .image-block:hover {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
+    #content-container {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      width: 100%;
+      display: none;
+    }
   </style>
+  <script>
+    function toggleContent(text) {
+      var container = document.getElementById('content-container');
+      if (container.style.display === "none" || container.innerHTML !== `<h2>Selected Information</h2><div>${text}</div>`) {
+        container.innerHTML = `<h2>Selected Information</h2><div>${text}</div>`;
+        container.style.display = "block";
+      } else {
+        container.style.display = "none";
+      }
+    }
+  </script>
 </head>
 <body>
   <h1>Genomic Analysis Dashboard</h1>
 
   <div class="image-container">
-    <a class="image-block" href="https://example.com/mutations" target="_blank">
+    <div class="image-block" onclick="toggleContent('','imagem/1_1.png')">
       <img src="imagem/1.png" alt="Identify Mutations">
-    </a>
+    </div>
 
-    <a class="image-block" href="https://example.com/investigation" target="_blank">
+    <div class="image-block" onclick="toggleContent('','imagem/2_1.png')">
       <img src="imagem/2.png" alt="Investigation of New Mutations">
-    </a>
+    </div>
 
-    <a class="image-block" href="https://example.com/variability" target="_blank">
+    <div class="image-block" onclick="toggleContent('','imagem/3_1.png')">
       <img src="imagem/3.png" alt="Analyze Genomic Variability">
-    </a>
+    </div>
 
-    <a class="image-block" href="https://example.com/targets" target="_blank">
+    <div class="image-block" onclick="toggleContent('', 'imagem/4_1.png')">
       <img src="imagem/4.png" alt="Explore Potential Therapeutic Targets">
-    </a>
+    </div>
   </div>
+  <script>
+    function toggleContent(text, imgSrc) {
+      var container = document.getElementById('content-container');
+      var newContent = `<h2></h2>
+                        <div>${text}</div>
+                        <img src="${imgSrc}" alt="Additional Image" style="width:100%; max-width:800px; margin-top:10px;">`;
+      
+      if (container.style.display === "none" || container.innerHTML !== newContent) {
+        container.innerHTML = newContent;
+        container.style.display = "block";
+      } else {
+        container.style.display = "none";
+      }
+    }
+  </script>
+  <div id="content-container"></div>
 </body>
 </html>
